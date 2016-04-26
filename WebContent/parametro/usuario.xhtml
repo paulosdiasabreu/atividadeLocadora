@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  template="/template.xhtml">
+	  
+	   <ui:define name="conteudo">
+	  
+	  		<p:panel header="Usuario">
+	  		
+	  			<h:form>
+	  			<p:growl /> 
+	  			<h:inputHidden value="#{usuarioController.usuario.idUsuario}" />
+	  			
+	  				<h:panelGrid columns="2">
+	  					
+	  					<h:outputLabel for="lgn" value="Login"/>
+	  					
+	  					<p:inputText id="lgn"
+	  						value="#{usuarioController.usuario.email}" label="Login"
+	  						required="true" />
+	  						
+	  					<h:outputLabel for="pass" value="Senha"/>	
+	  					<p:password id="pass" value="#{usuarioController.usuario.senha}" 
+	  						match="pass2" label="Senha" required="true" />
+	  						
+	  					<h:outputLabel for="pass2" value="Confirma Senha"/>	
+	  					<p:password id="pass2" value="#{usuarioController.usuario.senha}" 
+	  						label="Confirma Senha" required="true" /> 
+	  					
+	  				</h:panelGrid>
+	  				
+	  				<p:commandButton value="Salvar"
+	  					actionListener="#{usuarioController.salvar()}"
+	  					update="@form" />
+	  			
+	  			</h:form>
+	  			
+	  		</p:panel>
+	  		
+	  	</ui:define>
+	  
+</ui:composition>

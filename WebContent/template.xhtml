@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  
+	  
+<h:head>
+	<title>Locadora</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:menubar>
+			<p:submenu label="Parâmetros">
+				<p:menuitem value="Modelo" url="/parametro/modelo.jsf"/>
+				<p:menuitem value="Veículo" url="/parametro/veiculo.jsf"/>
+			</p:submenu>
+			<p:menuitem value="Cadastre-se" url="/parametro/usuario.jsf" />
+			<p:menuitem value="Login" url="/parametro/login.jsf" />
+		</p:menubar>
+	</h:form>
+	
+	<br/>
+	
+	<ui:insert name="conteudo"/>
+
+</h:body>
+
+
+</html>
