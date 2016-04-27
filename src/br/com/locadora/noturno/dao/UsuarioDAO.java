@@ -4,6 +4,7 @@ import br.com.locadora.noturno.entidade.*;
 import javax.ejb.*;
 //import javax.persistence.EntityManager;
 //import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class UsuarioDAO extends GenericDAO<Usuario> {
@@ -14,13 +15,15 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
 
 	Usuario usuario = new Usuario();
 
-	public Usuario getUsuario(String email, String senha) {
+	public Usuario confirmaUsuario(String email, String senha) {
 
 		try {
-			em.createQuery("SELECT x from " + classe.getSimpleName() + " as x where x.email "
-					+ "= 'paulo' and x.senha = '12345'").setParameter("email", email).setParameter("senha", senha);
+			TypedQuery<Usuario> query = em
+					.createQuery(
+							"SELECT x from " + classe.getSimpleName() + " as x where x.email " + "= '"
+							+ email  + "' and x.senha = '" + senha + "'" , classe);
 
-			return usuario;
+			return query.getSingleResult();
 		} catch (Exception ex) {
 			return null;
 		}

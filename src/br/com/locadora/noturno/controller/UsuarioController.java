@@ -42,15 +42,16 @@ public class UsuarioController {
 		}
 	}
 	
-	public String envia() {
+	public String efetuaLogin() {
         
-        usuario = usuarioDAO.getUsuario(usuario.getEmail(), usuario.getSenha());
-        if (usuario == null) {
-              usuario = new Usuario();
+        usuario = usuarioDAO.confirmaUsuario(usuario.getEmail(), usuario.getSenha());
+        
+       if (usuario == null) {
+              //usuario = new Usuario();
               FacesContext.getCurrentInstance().addMessage(null,
-                         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!",
-                                     "Erro no Login!"));
-              return null;
+                         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não cadastrado.",
+                        		 "Erro no login"));
+               return null;
         } else {
               return "/parametro/loginComSucesso.jsf";
         }
